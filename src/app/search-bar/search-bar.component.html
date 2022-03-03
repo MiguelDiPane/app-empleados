@@ -1,0 +1,4 @@
+<select class="form-select" aria-label="Default select example">
+    <option selected>Todos los empleados</option>
+    <option *ngFor="let empleado of empleados; let i=index" value="{{i}}">{{empleado.nombre}} {{empleado.apellido}}</option>
+</select>

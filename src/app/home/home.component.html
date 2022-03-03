@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row justify-content-center py-4">
+      <h3 class="text-center">Registro Empleados</h3>
+      <div class="col-sm-6">
+        <form class="formulario my-3">
+          <legend>Registrar empleado</legend>
+          <div class=" mb-4">
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="cuadroNombre" (input)="registro=false"/>
+          </div>
+          <div class=" mb-4">
+            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" [(ngModel)]="cuadroApellido"
+            (input)="registro=false"/>
+          </div>
+          <div class=" mb-4">
+            <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo" [(ngModel)]="cuadroCargo"
+            (input)="registro=false"/>
+          </div>
+          <div class=" mb-4">
+            <label for="salario">Salario pretendido</label>
+            <input type="number" id="salario" name="salario" class="form-control" placeholder="Salario" [(ngModel)]="cuadroSalario"
+            (input)="registro=false"/>
+          </div>     
+        
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary w-100 mb-4" (click)="registrarEmpleado()">Registrar</button>
+          <p *ngIf="registro" class="text-success">Usuario registrado</p>
+        </form>
+        
+  
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid py-3">
+    <div class="row justify-content-around">
+      <h3 class="text-center">{{title}}</h3>
+      <app-search-bar></app-search-bar>
+      <div class="col-sm-6 col-xl-3 my-3" *ngFor="let empleado of empleados; let i=index">
+        <!-- Con [] paso las variables al componente hijo -->
+        <app-empleado  [empleado]="empleado" [i]="i"></app-empleado>
+      </div>
+    </div>
+  </div>

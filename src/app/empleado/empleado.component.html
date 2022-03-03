@@ -1,0 +1,31 @@
+<div class="profile-card-4"><img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg" class="img img-responsive">
+    <div class="profile-content">
+        <div class="profile-name text-center">{{i+1}}- {{empleado.nombre}} {{empleado.apellido}}
+            <!--Práctica con ngStyle y prueba lógica-->
+            <p [ngStyle]="{color: empleado.cargo =='CEO' ? 'black' : 'white'}">
+                {{empleado.cargo}}
+            </p>
+        </div>
+
+        
+        <div class="profile-description">
+            <!--Práctica con ngClass y prueba lógica-->
+            <p class="mb-3">
+                Salario:
+                <span [ngClass]="{salarioResaltado:empleado.salario > 350000}">
+                {{empleado.salario}}
+                </span>
+            </p>
+
+            <!--Características agregadas desde el hijo -->
+            <p *ngFor="let caracteristica of arrayCaracteristicas; let i=index" class="card-text">
+                Característica {{i+1}}: {{caracteristica}}      
+            </p>
+
+            <!--Hijo (form para agregar características)-->
+            <app-caracteristicas-empleado (caracteristicasEmpleado)="agregarCaracteristica($event)"></app-caracteristicas-empleado>
+
+            <a href="#" class="btn btn-primary">Ver perfil</a>
+        </div>
+    </div>
+</div>
